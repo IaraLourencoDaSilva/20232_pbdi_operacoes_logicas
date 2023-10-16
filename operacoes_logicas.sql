@@ -1,4 +1,27 @@
 --Exercicio
+--1.4 Um comerciante comprou um produto e quer vendê-lo com um lucro de 45% se o valor
+-- da compra for menor que R$20. Caso contrário, ele deseja lucro de 30%. Faça um
+-- programa que, dado o valor do produto, calcula o valor de venda.
+DO $$
+DECLARE
+    valor_compra DECIMAL; 
+    valor_venda DECIMAL;
+    percentual_lucro DECIMAL;
+BEGIN
+    valor_compra := CAST(valor_aleatorio_entre(1, 100) AS DECIMAL);
+    IF valor_compra < 20 THEN
+        percentual_lucro := 0.45;  
+    ELSE
+        percentual_lucro := 0.30;  
+    END IF;
+    valor_venda := valor_compra + (valor_compra * percentual_lucro);
+	RAISE NOTICE 'Valor de compra: R$%.2f', valor_compra;
+    RAISE NOTICE 'Valor de venda: R$%.2f', valor_venda;
+END;
+$$;
+
+
+
 --1.3 Faça um programa que opera de acordo com o seguinte menu.
 -- Opções:
 -- 1 - Soma
@@ -10,43 +33,43 @@
 -- Exemplo:
 -- 2 + 3 = 5
 
-DO $$
-DECLARE
-    opcao INT;
-    num1 INT;
-    num2 INT;
-    resultado INT;
-BEGIN
-    num1 := valor_aleatorio_entre(1, 100); 
-    num2 := valor_aleatorio_entre(1, 100); 
-    RAISE NOTICE 'Opções:';
-    RAISE NOTICE '1 - Soma';
-    RAISE NOTICE '2 - Subtração';
-    RAISE NOTICE '3 - Multiplicação';
-    RAISE NOTICE '4 - Divisão';
-    opcao := 1; 
-    CASE opcao
-        WHEN 1 THEN
-            resultado := num1 + num2;
-        WHEN 2 THEN
-            resultado := num1 - num2;
-        WHEN 3 THEN
-            resultado := num1 * num2;
-        WHEN 4 THEN
-            resultado := num1 / num2;
-        ELSE
-            RAISE EXCEPTION 'Opção inválida';
-    END CASE;
-    RAISE NOTICE '%s %s %s = %s', num1, 
-        CASE opcao
-            WHEN 1 THEN '+'
-            WHEN 2 THEN '-'
-            WHEN 3 THEN '*'
-            WHEN 4 THEN '/'
-        END,
-        num2, resultado;
-END;
-$$;
+-- DO $$
+-- DECLARE
+--     opcao INT;
+--     num1 INT;
+--     num2 INT;
+--     resultado INT;
+-- BEGIN
+--     num1 := valor_aleatorio_entre(1, 100); 
+--     num2 := valor_aleatorio_entre(1, 100); 
+--     RAISE NOTICE 'Opções:';
+--     RAISE NOTICE '1 - Soma';
+--     RAISE NOTICE '2 - Subtração';
+--     RAISE NOTICE '3 - Multiplicação';
+--     RAISE NOTICE '4 - Divisão';
+--     opcao := 1; 
+--     CASE opcao
+--         WHEN 1 THEN
+--             resultado := num1 + num2;
+--         WHEN 2 THEN
+--             resultado := num1 - num2;
+--         WHEN 3 THEN
+--             resultado := num1 * num2;
+--         WHEN 4 THEN
+--             resultado := num1 / num2;
+--         ELSE
+--             RAISE EXCEPTION 'Opção inválida';
+--     END CASE;
+--     RAISE NOTICE '%s %s %s = %s', num1, 
+--         CASE opcao
+--             WHEN 1 THEN '+'
+--             WHEN 2 THEN '-'
+--             WHEN 3 THEN '*'
+--             WHEN 4 THEN '/'
+--         END,
+--         num2, resultado;
+-- END;
+-- $$;
 
 
 --1.2 Faça um programa que exibe se um número inteiro é múltiplo de 3 ou de 5.
