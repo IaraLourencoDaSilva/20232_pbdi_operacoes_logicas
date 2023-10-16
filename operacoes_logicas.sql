@@ -1,4 +1,54 @@
 --Exercicio
+--1.3 Faça um programa que opera de acordo com o seguinte menu.
+-- Opções:
+-- 1 - Soma
+-- 2 - Subtração
+-- 3 - Multiplicação
+-- 4 - Divisão
+-- Cada operação envolve dois números inteiros. O resultado deve ser exibido no formato
+-- op1 op op2 = res
+-- Exemplo:
+-- 2 + 3 = 5
+
+DO $$
+DECLARE
+    opcao INT;
+    num1 INT;
+    num2 INT;
+    resultado INT;
+BEGIN
+    num1 := valor_aleatorio_entre(1, 100); 
+    num2 := valor_aleatorio_entre(1, 100); 
+    RAISE NOTICE 'Opções:';
+    RAISE NOTICE '1 - Soma';
+    RAISE NOTICE '2 - Subtração';
+    RAISE NOTICE '3 - Multiplicação';
+    RAISE NOTICE '4 - Divisão';
+    opcao := 1; 
+    CASE opcao
+        WHEN 1 THEN
+            resultado := num1 + num2;
+        WHEN 2 THEN
+            resultado := num1 - num2;
+        WHEN 3 THEN
+            resultado := num1 * num2;
+        WHEN 4 THEN
+            resultado := num1 / num2;
+        ELSE
+            RAISE EXCEPTION 'Opção inválida';
+    END CASE;
+    RAISE NOTICE '%s %s %s = %s', num1, 
+        CASE opcao
+            WHEN 1 THEN '+'
+            WHEN 2 THEN '-'
+            WHEN 3 THEN '*'
+            WHEN 4 THEN '/'
+        END,
+        num2, resultado;
+END;
+$$;
+
+
 --1.2 Faça um programa que exibe se um número inteiro é múltiplo de 3 ou de 5.
 DO $$
 DECLARE
