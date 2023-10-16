@@ -1,17 +1,32 @@
 --Exercicio
--- 1.1 Faça um programa que exibe se um número inteiro é múltiplo de 3
+--1.2 Faça um programa que exibe se um número inteiro é múltiplo de 3 ou de 5.
 DO $$
 DECLARE
     numero_aleatorio INT;
 BEGIN
-    numero_aleatorio := valor_aleatorio_entre(1, 100);
-    IF numero_aleatorio % 3 = 0 THEN
-        RAISE NOTICE 'O número aleatório % é múltiplo de 3', numero_aleatorio;
+    numero_aleatorio := valor_aleatorio_entre(1, 100); 
+    IF numero_aleatorio % 3 = 0 OR numero_aleatorio % 5 = 0 THEN
+        RAISE NOTICE 'O número aleatório % é múltiplo de 3 ou de 5', numero_aleatorio;
     ELSE
-        RAISE NOTICE 'O número aleatório % não é múltiplo de 3', numero_aleatorio;
+        RAISE NOTICE 'O número aleatório % não é múltiplo de 3 nem de 5', numero_aleatorio;
     END IF;
 END;
 $$;
+
+
+-- 1.1 Faça um programa que exibe se um número inteiro é múltiplo de 3
+-- DO $$
+-- DECLARE
+--     numero_aleatorio INT;
+-- BEGIN
+--     numero_aleatorio := valor_aleatorio_entre(1, 100);
+--     IF numero_aleatorio % 3 = 0 THEN
+--         RAISE NOTICE 'O número aleatório % é múltiplo de 3', numero_aleatorio;
+--     ELSE
+--         RAISE NOTICE 'O número aleatório % não é múltiplo de 3', numero_aleatorio;
+--     END IF;
+-- END;
+-- $$;
 
 
 -- DO $$
