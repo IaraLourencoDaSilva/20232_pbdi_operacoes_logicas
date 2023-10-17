@@ -1,4 +1,34 @@
 --Exercicio
+-- 1.5 Problema do link 
+DO $$
+DECLARE
+    salario DECIMAL;        -- Substitua pelo salário do funcionário
+    novo_salario DECIMAL;
+    reajuste DECIMAL;
+    percentual_reajuste DECIMAL;
+BEGIN
+    salario := CAST(valor_aleatorio_entre(0, 2500) AS DECIMAL);
+    IF salario <= 400 THEN
+        percentual_reajuste := 0.15;  -- 15%
+    ELSIF salario <= 800 THEN
+        percentual_reajuste := 0.12;  -- 12%
+    ELSIF salario <= 1200 THEN
+        percentual_reajuste := 0.10;  -- 10%
+    ELSIF salario <= 2000 THEN
+        percentual_reajuste := 0.07;  -- 7%
+    ELSE
+        percentual_reajuste := 0.04;  -- 4%
+    END IF;
+    reajuste := salario * percentual_reajuste;
+    novo_salario := salario + reajuste;
+    RAISE NOTICE 'Salário atual: R$%.2f', salario;
+    RAISE NOTICE 'Percentual de reajuste: %.2f%%', percentual_reajuste * 100;
+    RAISE NOTICE 'Reajuste: R$%.2f', reajuste;
+    RAISE NOTICE 'Novo salário: R$%.2f', novo_salario;
+END;
+$$;
+
+
 --1.4 Um comerciante comprou um produto e quer vendê-lo com um lucro de 45% se o valor
 -- da compra for menor que R$20. Caso contrário, ele deseja lucro de 30%. Faça um
 -- programa que, dado o valor do produto, calcula o valor de venda.
